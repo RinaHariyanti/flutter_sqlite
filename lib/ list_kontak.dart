@@ -1,13 +1,16 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
-import 'form_kontak.dart';
 
 import 'database/db_helper.dart';
+import 'form_kontak.dart';
 import 'model/kontak.dart';
 
 class ListKontakPage extends StatefulWidget {
   const ListKontakPage({ Key? key }) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _ListKontakPageState createState() => _ListKontakPageState();
 }
 
@@ -36,7 +39,7 @@ class _ListKontakPageState extends State<ListKontakPage> {
                   top: 20
               ),
               child: ListTile(
-                leading: Icon(
+                leading: const Icon(
                   Icons.person,
                   size: 50,
                 ),
@@ -51,19 +54,19 @@ class _ListKontakPageState extends State<ListKontakPage> {
                       padding: const EdgeInsets.only(
                         top: 8,
                       ),
-                      child: Text("Email: ${kontak.nim}"),
+                      child: Text("Nim: ${kontak.nim}"),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
                         top: 8,
                       ),
-                      child: Text("Phone: ${kontak.nim}"),
+                      child: Text("Alamat: ${kontak.alamat}"),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
                         top: 8,
                       ),
-                      child: Text("Company: ${kontak.alamat}"),
+                      child: Text("Jenis Kelamin: ${kontak.jk}"),
                     )
                   ],
                 ),
@@ -77,16 +80,16 @@ class _ListKontakPageState extends State<ListKontakPage> {
                           onPressed: () {
                             _openFormEdit(kontak);
                           },
-                          icon: Icon(Icons.edit)
+                          icon: const Icon(Icons.edit)
                       ),
                       // button hapus
                       IconButton(
-                        icon: Icon(Icons.delete),
+                        icon: const Icon(Icons.delete),
                         onPressed: (){
                           //membuat dialog konfirmasi hapus
                           AlertDialog hapus = AlertDialog(
-                            title: Text("Information"),
-                            content: Container(
+                            title: const Text("Information"),
+                            content: SizedBox(
                               height: 100,
                               child: Column(
                                 children: [
@@ -105,10 +108,10 @@ class _ListKontakPageState extends State<ListKontakPage> {
                                     _deleteKontak(kontak, index);
                                     Navigator.pop(context);
                                   },
-                                  child: Text("Ya")
+                                  child: const Text("Ya")
                               ),
                               TextButton(
-                                child: Text('Tidak'),
+                                child: const Text('Tidak'),
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
@@ -126,7 +129,7 @@ class _ListKontakPageState extends State<ListKontakPage> {
           }),
       //membuat button mengapung di bagian bawah kanan layar
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: (){
           _openFormCreate();
         },
@@ -146,11 +149,11 @@ class _ListKontakPageState extends State<ListKontakPage> {
       listKontak.clear();
 
       //lakukan perulangan pada variabel list
-      list!.forEach((kontak) {
+      for (var kontak in list!) {
 
         //masukan data ke listKontak
         listKontak.add(Kontak.fromMap(kontak));
-      });
+      }
     });
   }
 
@@ -165,7 +168,7 @@ class _ListKontakPageState extends State<ListKontakPage> {
   // membuka halaman tambah Kontak
   Future<void> _openFormCreate() async {
     var result = await Navigator.push(
-        context, MaterialPageRoute(builder: (context) => FormKontak()));
+        context, MaterialPageRoute(builder: (context) => const FormKontak()));
     if (result == 'save') {
       await _getAllKontak();
     }

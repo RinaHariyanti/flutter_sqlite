@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:learningsqlite/%20list_kontak.dart';
 import 'package:learningsqlite/form_kontak.dart';
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
   @override
+  // ignore: library_private_types_in_public_api
   _MyHomePageState createState() => _MyHomePageState();
 }
 class _MyHomePageState extends State<MyHomePage> {
@@ -36,14 +37,14 @@ class _MyHomePageState extends State<MyHomePage> {
             "BIODATA MAHASISWA",
           ),
           centerTitle: true,
-          bottom: TabBar(
+          bottom: const TabBar(
             tabs: [
               Tab(text: 'Biodata',),
               Tab(text: 'List',)
             ],
           ),
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: [
             FormKontak(),
             ListKontakPage()

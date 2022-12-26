@@ -1,6 +1,7 @@
 import 'package:learningsqlite/model/kontak.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:sqflite/sqlite_api.dart';
+//import 'package:sqflite/sqlite_api.dart';
+// ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
 
 class DbHelper {
